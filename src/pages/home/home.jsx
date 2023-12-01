@@ -22,65 +22,65 @@ const Home = () => {
         setOpenModal(true);
     };
 
-    const registro = async (diretorio, email, password, re_password, name, cnh, placa_carro) => {
-        const Data = [diretorio, email, password, re_password, name, cnh, placa_carro];
-        const Data2 = ['diretorio', 'email', 'password', 're_password', 'name', 'cnh', 'placa_carro'];
-        const formData = new FormData();
+    // const registro = async (diretorio, email, password, re_password, name, cnh, placa_carro) => {
+    //     const Data = [diretorio, email, password, re_password, name, cnh, placa_carro];
+    //     const Data2 = ['diretorio', 'email', 'password', 're_password', 'name', 'cnh', 'placa_carro'];
+    //     const formData = new FormData();
 
-        for (let i = 0; i < Data.length; i++) {
-            formData.append(Data2[i], Data[i]);
-        }
-
-
-        const config = {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            }
-        };
+    //     for (let i = 0; i < Data.length; i++) {
+    //         formData.append(Data2[i], Data[i]);
+    //     }
 
 
-        axios.post('http://127.0.0.1:8000/api/auth/users/', formData, config)
-            .then((result) => alert('Email de ativação de conta enviado com sucesso! \nPara ativar sua conta, verifique seu email.'))
-            .catch((error) => console.error(error));
-    }
-
-    const login = async (email, senha) => {
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('password', senha);
-
-        const config = {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            }
-        };
+    //     const config = {
+    //         headers: {
+    //             'Content-Type': 'multipart/form-data',
+    //         }
+    //     };
 
 
-        await axios.post('http://127.0.0.1:8000/api/auth/token/login/', formData, config)
-            .then(async (res) => {
-                sessionStorage.setItem('auth_token', res.data.auth_token);
-                await axios.get('http://127.0.0.1:8000/api/auth/users/me/', {
-                    headers: {
-                        Authorization: `Token ${res.data.auth_token}`
-                    }
-                })
-                    .then((res) => {
-                        // Percorrendo as chaves do objeto
-                        for (const chave in res.data) {
-                            if (res.data.hasOwnProperty(chave)) {
-                                const conteudo = res.data[chave];
+    //     axios.post('http://127.0.0.1:8000/api/auth/users/', formData, config)
+    //         .then((result) => alert('Email de ativação de conta enviado com sucesso! \nPara ativar sua conta, verifique seu email.'))
+    //         .catch((error) => console.error(error));
+    // }
 
-                                // Armazenando no sessionStorage
-                                sessionStorage.setItem(chave, conteudo);
-                            }
-                        }
-                        history('/logado');
-                    })
-                    .catch((e) => console.error(e))
-            }).catch((e) => {
-                console.error(e);
-            })
-    };
+    // const login = async (email, senha) => {
+    //     const formData = new FormData();
+    //     formData.append('email', email);
+    //     formData.append('password', senha);
+
+    //     const config = {
+    //         headers: {
+    //             'Content-Type': 'multipart/form-data',
+    //         }
+    //     };
+
+
+    //     await axios.post('http://127.0.0.1:8000/api/auth/token/login/', formData, config)
+    //         .then(async (res) => {
+    //             sessionStorage.setItem('auth_token', res.data.auth_token);
+    //             await axios.get('http://127.0.0.1:8000/api/auth/users/me/', {
+    //                 headers: {
+    //                     Authorization: `Token ${res.data.auth_token}`
+    //                 }
+    //             })
+    //                 .then((res) => {
+    //                     // Percorrendo as chaves do objeto
+    //                     for (const chave in res.data) {
+    //                         if (res.data.hasOwnProperty(chave)) {
+    //                             const conteudo = res.data[chave];
+
+    //                             // Armazenando no sessionStorage
+    //                             sessionStorage.setItem(chave, conteudo);
+    //                         }
+    //                     }
+    //                     history('/logado');
+    //                 })
+    //                 .catch((e) => console.error(e))
+    //         }).catch((e) => {
+    //             console.error(e);
+    //         })
+    // };
 
 
 
@@ -91,7 +91,11 @@ const Home = () => {
                 <B_Entrar Pop_up={pop_pup} />
             </Header>
             <main>
-                <Modal Log_func={login} isOpen={openModal} SetModal={setOpenModal} Reg_func={registro} />
+                <Modal 
+                // Log_func={login} 
+                isOpen={openModal} SetModal={setOpenModal} 
+                // Reg_func={registro} 
+                />
             </main>
         </>
     );
