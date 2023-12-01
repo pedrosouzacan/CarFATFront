@@ -15,7 +15,9 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "serve-heroku": "vite --host 0.0.0.0 --port $PORT preview",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.0",
