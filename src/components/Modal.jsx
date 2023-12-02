@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import style from './SCSS/Modal.module.css';
 import { CgClose } from 'react-icons/cg';
 import Login_form from './login_form';
-import RegisterForm from './register_form';
+import RegisterForm from './Register_form';
 
 const Modal = ({ isOpen, SetModal, Log_func, Reg_func }) => {
 
