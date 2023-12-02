@@ -1,1 +1,0 @@
-web: npm install -g npm@10.2.4; npm install; npm start
