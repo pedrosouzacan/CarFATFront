@@ -5,5 +5,5 @@ import { createProxyMiddleware } from 'http-proxy-middleware';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/Carfatfront'
+  // base: '/Carfatfront'
 })
